@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
+from six import with_metaclass
 from django.db import models
-from django.utils.six import with_metaclass
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import smart_text
 
@@ -40,7 +40,7 @@ class GeopositionField(models.Field):
 
         return Geoposition(latitude, longitude)
 
-    def from_db_value(self, value, expression, connection, context):
+    def from_db_value(self, value, expression, *args, **kwargs):
         return self.to_python(value)
 
     def get_prep_value(self, value):
